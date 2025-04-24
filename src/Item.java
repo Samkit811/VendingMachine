@@ -7,11 +7,9 @@ public class Item {
     private Integer price;
     private Integer capacity;
 
-    public Item(String name, Integer id, Integer row, Integer column, Integer quantity, Integer price, Integer capacity){
+    public Item(String name, Integer id, Integer quantity, Integer price, Integer capacity){
         this.name = name;
         this.id = id;
-        this.row = row;
-        this.column = column;
         this.quantity = quantity;
         this.price = price;
         this.capacity = capacity;
@@ -19,6 +17,14 @@ public class Item {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public void setRow(Integer row) {
+        this.row = row;
+    }
+
+    public void setColumn(Integer column) {
+        this.column = column;
     }
 
     public Integer getPrice() {
