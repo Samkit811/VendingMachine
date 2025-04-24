@@ -1,0 +1,7 @@
+public enum StateType {
+    IDEAL,
+    MONEY_ACCEPTING,
+    PRODUCT_SELECTION,
+    PRODUCT_COLLECTION,
+    MONEY_COLLECTION
+}
