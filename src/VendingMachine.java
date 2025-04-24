@@ -12,6 +12,8 @@ public class VendingMachine {
     }
 
     public void AddItem(Item item, Integer row, Integer column){
+        item.setRow(row);
+        item.setColumn(column);
         if(this.checkItem(item, row, column)){
             Item placedItem = this.vendingMachine[row][column];
             if(placedItem == null){
@@ -41,7 +43,7 @@ public class VendingMachine {
     public void start(){
         this.state.setCurrentState(StateType.MONEY_ACCEPTING);
 
-        while(this.state.getCurrentState() == StateType.IDEAL){
+        while(this.state.getCurrentState() != StateType.IDEAL){
             switch (this.state.getCurrentState()){
                 case MONEY_ACCEPTING : {
                     this.enterMoney();
