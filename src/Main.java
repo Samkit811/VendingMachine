@@ -2,8 +2,7 @@ public class Main {
     public static void main(String[] args) {
 
         int row = 7, column = 5;
-        State state = new State();
-        VendingMachine vendingMachine = new VendingMachine(row, column, state);
+        VendingMachine vendingMachine = new VendingMachine(row, column);
 
         Item pepsi = new Item("pepsi", 1, 10, 100, 20);
         Item sprite = new Item("sprite", 1, 10, 100, 20);

@@ -6,9 +6,9 @@ public class VendingMachine {
     private MoneyAccept moneyAccept;
     private Item item;
 
-    public VendingMachine(Integer row, Integer column, State state){
+    public VendingMachine(Integer row, Integer column){
         this.vendingMachine = new Item[row][column];
-        this.state = state;
+        this.state = new State();
     }
 
     public void AddItem(Item item, Integer row, Integer column){
