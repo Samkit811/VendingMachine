@@ -7,27 +7,23 @@ public class MoneyCollection implements UpdateState  {
     }
 
     public void dispatchMoney(State state){
-        if(this.isStateValid(state)){
-            if(this.remainingMoney > 0){
-                System.out.println("Collect the remaining Money: " + this.remainingMoney);
-            }
-            this.next(state);
+        this.isStateValid(state);
+        if(this.remainingMoney > 0){
+            System.out.println("Collect the remaining Money: " + this.remainingMoney);
         }
+        this.next(state);
     }
 
     @Override
     public void next(State state){
-        if(this.isStateValid(state)){
-            state.setCurrentState(StateType.IDEAL);
-        }
+        this.isStateValid(state);
+        state.setCurrentState(StateType.IDEAL);
     }
 
     @Override
-    public Boolean isStateValid(State state) {
+    public void isStateValid(State state) {
         if(state.getCurrentState() != StateType.MONEY_COLLECTION){
             this.throwAccessDeniedError();
-            return false;
         }
-        return true;
     }
 }

@@ -6,9 +6,7 @@ public class ItemSelection implements UpdateState {
     }
 
     public void itemPurchase(State state, MoneyAccept moneyAccept){
-        if(!this.isStateValid(state)){
-            return;
-        }
+        this.isStateValid(state);
         if(moneyAccept.getMoney() < this.item.getPrice()){
             System.out.println("Please Enter Sufficient Money to Buy item: " + item.getName());
             state.setCurrentState(StateType.MONEY_COLLECTION);
@@ -32,17 +30,14 @@ public class ItemSelection implements UpdateState {
 
     @Override
     public void next(State state) {
-        if(this.isStateValid(state)){
-            state.setCurrentState(StateType.PRODUCT_COLLECTION);
-        }
+        this.isStateValid(state);
+        state.setCurrentState(StateType.PRODUCT_COLLECTION);
     }
 
     @Override
-    public Boolean isStateValid(State state) {
-        if(state.getCurrentState() != StateType.PRODUCT_SELECTION){
+    public void isStateValid(State state) {
+        if(state.getCurrentState() != StateType.PRODUCT_SELECTION) {
             this.throwAccessDeniedError();
-            return false;
         }
-        return true;
     }
 }
