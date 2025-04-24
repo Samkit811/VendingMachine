@@ -5,19 +5,19 @@ public class ItemSelection implements UpdateState {
         this.item = item;
     }
 
-    public Boolean itemPurchase(State state, MoneyAccept moneyAccept){
+    public void itemPurchase(State state, MoneyAccept moneyAccept){
         if(!this.isStateValid(state)){
-            return false;
+            return;
         }
         if(moneyAccept.getMoney() < this.item.getPrice()){
             System.out.println("Please Enter Sufficient Money to Buy item: " + item.getName());
             state.setCurrentState(StateType.MONEY_COLLECTION);
-            return false;
+            return;
         }
         if(this.item.getQuantity() == 0){
             System.out.println("Item is currently Out Of Stock, Sorry For Your Inconvenience");
             state.setCurrentState(StateType.MONEY_COLLECTION);
-            return false;
+            return;
         }
         System.out.println("Thanks for purchasing the item: " + item.getName());
         Integer currentQuantity = this.item.getQuantity();
@@ -27,7 +27,6 @@ public class ItemSelection implements UpdateState {
         userMoney = userMoney - itemPrice;
         moneyAccept.setMoney(userMoney);
         this.next(state);
-        return true;
     }
 
 

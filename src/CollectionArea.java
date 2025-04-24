@@ -6,6 +6,7 @@ public class CollectionArea implements UpdateState {
     }
 
     public void collectItem(State state){
+        System.out.println("Collect the purchased Item: " + this.item.getName());
         if(this.isStateValid(state)){
             this.next(state);
         }

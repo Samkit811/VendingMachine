@@ -5,14 +5,16 @@ public class Item {
     private Integer column;
     private Integer quantity;
     private Integer price;
+    private Integer capacity;
 
-    public Item(String name, Integer id, Integer row, Integer column, Integer quantity, Integer price){
+    public Item(String name, Integer id, Integer row, Integer column, Integer quantity, Integer price, Integer capacity){
         this.name = name;
         this.id = id;
         this.row = row;
         this.column = column;
         this.quantity = quantity;
         this.price = price;
+        this.capacity = capacity;
     }
 
     public void setQuantity(Integer quantity) {
@@ -41,5 +43,21 @@ public class Item {
 
     public Integer getQuantity() {
         return quantity;
+    }
+
+    public Integer getCapacity() {
+        return capacity;
+    }
+
+    public boolean checkSpace(Integer newQuantity){
+        return newQuantity + this.quantity > this.capacity;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Item item = (Item) obj;
+        return id != null && id.equals(item.getId());
     }
 }
